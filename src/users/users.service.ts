@@ -9,14 +9,11 @@ export class UsersService {
   ) {}
 
   async findOrCreateUser(login: string, avatarUrl: string): Promise<User> {
-    // Find user by login
     let user = await this.userRepository.findOne({ where: { login } });
 
     if (!user) {
-      // Create a new user if not found
       user = await this.userRepository.create({ login, avatarUrl });
     } else {
-      // Update existing user's avatar URL if necessary
       user.avatarUrl = avatarUrl;
       await user.save();
     }

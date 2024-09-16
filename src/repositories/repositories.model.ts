@@ -23,4 +23,10 @@ export class Repository extends Model<Repository> {
 
   @Column({ type: DataType.INTEGER, allowNull: false })
   userId: number;
+
+  @Column(DataType.STRING)
+  userLogin?: string;
+
+  @Column(DataType.STRING)
+  userAvatarUrl?: string;
 }
